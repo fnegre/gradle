@@ -145,7 +145,10 @@ public interface FileCollection extends Iterable<File>, AntBuilderAware, Buildab
      *
      * @return this
      * @throws StopExecutionException When this collection is empty.
+     *
+     * @deprecated Throw a `StopExecutionException` in your code manually instead.
      */
+    @Deprecated
     FileCollection stopExecutionIfEmpty() throws StopExecutionException;
 
     /**

@@ -34,6 +34,10 @@ The following are the newly deprecated items in this Gradle release. If you have
 ### Example deprecation
 -->
 
+### Methods on `FileCollection`
+
+- `stopExecutionIfEmpty()` is deprecated without a replacement. You can throw a `StopExecutionException` in your code manually instead.
+
 ## Potential breaking changes
 
 <!--

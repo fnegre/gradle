@@ -84,4 +84,17 @@ class FileCollectionIntegrationTest extends AbstractIntegrationSpec {
         output.contains "input.txt"
         output.contains "Do not cast FileCollection to FileTree. This has been deprecated and is scheduled to be removed in Gradle 5.0. Call getAsFileTree() instead."
     }
+
+    def "using 'stopExecutionIfEmpty()' produces deprecation warning"() {
+        buildFile << """
+            files().stopExecutionIfEmpty()
+        """
+
+        executer.expectDeprecationWarning().withFullDeprecationStackTraceDisabled()
+
+        expect:
+        fails "help"
+        failureHasCause "File collection does not contain any files."
+        output.contains "The FileCollection.stopExecutionIfEmpty() method has been deprecated and is scheduled to be removed in Gradle 5.0."
+    }
 }
